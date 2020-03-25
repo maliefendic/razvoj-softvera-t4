@@ -38,4 +38,5 @@ public class Controller {
         }
         poljePotvrdeUpisa.setText(s);
     }
+
 }

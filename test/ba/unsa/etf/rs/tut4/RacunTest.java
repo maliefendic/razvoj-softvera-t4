@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RacunTest {
 
- /*   @Test
+  /*  @Test
     void test1() {
         Racun r = new Racun();
         r.dodajStavku(new Artikal("HLB", "Hljeb", 1.1), 2);

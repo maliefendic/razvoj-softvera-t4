@@ -27,7 +27,6 @@ public class Racun {
         }
     }
     private ArrayList<Stavke> stavke;
-
     public  Racun(){
     }
 
