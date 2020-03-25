@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.skin.ComboBoxListViewSkin;
+import javafx.scene.input.MouseEvent;
 
 import javax.swing.*;
 import java.io.BufferedReader;
@@ -24,7 +25,7 @@ public class Controller {
     @FXML
     public TextArea poljePregled;
     @FXML
-    public ComboBox comoboks1;
+    public ChoiceBox comoboks1;
     @FXML
     public Spinner spiner;
 
@@ -68,7 +69,7 @@ public class Controller {
         poljePregled.setText(r.toString());
     }
 
-    public void promjeniUkolicini(ActionEvent actionEvent) {
+    public void promjeniUkoliciniv(MouseEvent mouseEvent) {
         System.out.println(comoboks1.getSelectionModel().getSelectedIndex());
         int i=comoboks1.getSelectionModel().getSelectedIndex();
         SpinnerValueFactory<Integer>  v= new SpinnerValueFactory.IntegerSpinnerValueFactory(1,100000,1);

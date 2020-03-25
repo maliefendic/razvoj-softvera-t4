@@ -1,6 +1,8 @@
 package ba.unsa.etf.rs.tut4;
 import java.util.ArrayList;
 
+import static java.lang.StrictMath.round;
+
 public class Racun {
     private class Stavke{
         Artikal artikal;
