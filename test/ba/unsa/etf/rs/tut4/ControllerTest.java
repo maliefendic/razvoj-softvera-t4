@@ -1,21 +1,23 @@
 package ba.unsa.etf.rs.tut4;
-import javafx.scene.control.*;
+
+import com.sun.media.jfxmediaimpl.platform.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-
-import static org.junit.jupiter.api.Assertions.*;
 import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 
-import java.awt.*;
 import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ExtendWith(ApplicationExtension.class)
 class ControllerTest {
@@ -46,16 +48,34 @@ class ControllerTest {
     @Test
     void testZadrugiTab(FxRobot robot){
         unosArtikla(robot);
+        robot.lookup("#poljePregled").tryQuery().isPresent();
         robot.clickOn("#tab2");
         robot.clickOn("#choiceboks");
         robot.press(KeyCode.DOWN).release(KeyCode.DOWN).press(KeyCode.ENTER).release(KeyCode.ENTER);
         robot.clickOn("#spiner");
         robot.press(KeyCode.UP).press(KeyCode.UP).press(KeyCode.UP).release(KeyCode.UP).release(KeyCode.UP).release(KeyCode.UP);
         robot.clickOn("#btnDodajNaRacun");
-
         TextArea polje=robot.lookup("#poljePregled").queryAs(TextArea.class);
         assertEquals("maslo 2 4.0\n" +
                                "UKUPNO 4.0",polje.getText());
+    }
+    @Test
+    void pogledUchiceBox(FxRobot robot){
+        testZadrugiTab(robot);
+        ChoiceBox artikli=robot.lookup("#choiceboks").queryAs(ChoiceBox.class);
+        assertNotNull(artikli);
+        javafx.application.Platform.runLater(() -> artikli.show());
+        try {
+            Thread.sleep(500);
+        }catch (InterruptedException e){
+                e.printStackTrace();
+        }
+        robot.clickOn("#btnDodajNaRacun");
+        TextArea polje=robot.lookup("#poljePregled").queryAs(TextArea.class);
+        assertEquals("maslo 2 4.0\n" +
+                              "maslo 1 2.0\n" +
+                              "UKUPNO 6.0",polje.getText());
+
     }
 
 
