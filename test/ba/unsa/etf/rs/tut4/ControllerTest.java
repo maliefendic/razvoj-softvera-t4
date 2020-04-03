@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -42,7 +43,20 @@ class ControllerTest {
                 "mas123, maslo, 2.0\n" +
                 " riz231, riza, 3.0\n", polje.getText());
     }
-  
+    @Test
+    void testZadrugiTab(FxRobot robot){
+        unosArtikla(robot);
+        robot.clickOn("#tab2");
+        robot.clickOn("#choiceboks");
+        robot.press(KeyCode.DOWN).release(KeyCode.DOWN).press(KeyCode.ENTER).release(KeyCode.ENTER);
+        robot.clickOn("#spiner");
+        robot.press(KeyCode.UP).press(KeyCode.UP).press(KeyCode.UP).release(KeyCode.UP).release(KeyCode.UP).release(KeyCode.UP);
+        robot.clickOn("#btnDodajNaRacun");
+
+        TextArea polje=robot.lookup("#poljePregled").queryAs(TextArea.class);
+        assertEquals("maslo 2 4.0\n" +
+                               "UKUPNO 4.0",polje.getText());
+    }
 
 
 }
