@@ -12,17 +12,6 @@ public class Racun {
    private ObservableList<Stavke> racun= FXCollections.observableArrayList();
    private SimpleObjectProperty<Artikal> trenutniArtikl=new SimpleObjectProperty<>();
 
-    public void setTrenutniArtikl(Artikal trenutniArtikl) {
-        this.trenutniArtikl.set(trenutniArtikl);
-    }
-
-    public Artikal getTrenutniArtikl() {
-        return trenutniArtikl.get();
-    }
-
-    public SimpleObjectProperty<Artikal> trenutniArtiklProperty() {
-        return trenutniArtikl;
-    }
 
     private class Stavke{
         Artikal artikal;
@@ -47,6 +36,18 @@ public class Racun {
         public int getKolicina() {
             return kolicina;
         }
+    }
+
+    public void setTrenutniArtikl(Artikal trenutniArtikl) {
+        this.trenutniArtikl.set(trenutniArtikl);
+    }
+
+    public Artikal getTrenutniArtikl() {
+        return this.trenutniArtikl.get();
+    }
+
+    public SimpleObjectProperty<Artikal> trenutniArtiklProperty() {
+        return trenutniArtikl;
     }
 
    public  void dodajStavku(Artikal artikal, int kolicina){
