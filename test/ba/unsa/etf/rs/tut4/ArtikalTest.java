@@ -197,4 +197,10 @@ class ArtikalTest {
         assertEquals("ja123",a.sifraProperty().get());
         assertEquals(3.4,a.cijenaProperty().get());
     }
+    @Test
+    void  provjeraIspisToString(){
+        Artikal a = new Artikal("kr98","kruska",3.2);
+        assertEquals("kr98",a.toString());
+
+    }
 }
