@@ -190,4 +190,11 @@ class ArtikalTest {
                "brasno, tip520, 22.0\n" +
                "cokolada, co432, 1.0\n",Artikal.IspisiArtikle(artikli));
     }
+    @Test
+    void testZaProperty_e(){
+        Artikal a = new Artikal("ja123","jabuka",3.4);
+        assertEquals("jabuka",a.nazivProperty().get());
+        assertEquals("ja123",a.sifraProperty().get());
+        assertEquals(3.4,a.cijenaProperty().get());
+    }
 }
