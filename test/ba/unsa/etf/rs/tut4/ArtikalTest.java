@@ -1,5 +1,8 @@
 package ba.unsa.etf.rs.tut4;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -139,5 +142,41 @@ class ArtikalTest {
         assertTrue(lista.contains(new Artikal("DEF", "Usluga", 200)));
         assertFalse(lista.contains(new Artikal("ABC", "Usluga", 100)));
         assertFalse(lista.contains(new Artikal("DEF", "Usluga", 100)));
+    }
+
+    @Test
+    void izbaciDuplikateObservableList () {
+        ObservableList<Artikal> lista = FXCollections.observableArrayList();
+
+        lista.add(new Artikal("222D", "tesnje", 3.4));
+        lista.add(new Artikal("111D", "jagode", 2));
+        lista.add(new Artikal("222C", "jabuke", 1));
+        lista.add(new Artikal("222C", "jabuke", 1));
+        lista.add(new Artikal("222D", "tesnje", 3.4));
+        lista.add(new Artikal("222V", "visnje", 3));
+        lista.add(new Artikal("111A", "kruske",  5));
+        Artikal.izbaciDuplikate(lista);
+        assertEquals(5, lista.size());
+
+        // Pošto nećemo da pravimo nikakve pretpostavke o redoslijedu nakon izbacivanja,
+        // sada tražimo da li se u listi nalaze artikli
+        assertTrue(lista.contains(new Artikal("222D", "tesnje", 3.4)));
+        assertTrue(lista.contains(new Artikal("111D", "jagode", 2)));
+        assertTrue(lista.contains(new Artikal("222C", "jabuke", 1)));
+        assertTrue(lista.contains(new Artikal("222V", "visnje", 3)));
+        assertTrue(lista.contains(new Artikal("111A", "kruske",  5)));
+
+    }
+    @Test
+    void ispisiArtikle(){
+        Artikal a = new Artikal("ja123","jabuka",3.4);
+        assertEquals("jabuka, ja123, 3.4\n",a.ArtiklIspis());
+
+    }
+    @Test
+    void objektiSeNemoguUporediti(){
+        Artikal a = new Artikal("ja123","jabuka",3.4);
+        assertEquals(false,a.equals(null));
+
     }
 }

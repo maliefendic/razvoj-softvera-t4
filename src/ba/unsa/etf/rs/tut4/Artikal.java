@@ -15,7 +15,6 @@ public class Artikal {
         this.setCijena(cijena);
     }
 
-
     public void setSifra(String sifra) {
             if(sifra.contentEquals("")) throw new IllegalArgumentException("Šifra je prazna");
         this.sifra= new SimpleStringProperty(sifra);
@@ -83,7 +82,8 @@ public class Artikal {
 
     @Override
     public boolean equals(Object obj) {
-        if(obj!=null){
+
+        if(obj!=null && obj instanceof  Artikal){
         Artikal artikal = (Artikal)obj;
         return this.getCijena()==artikal.getCijena()  && this.getNaziv().contentEquals(artikal.getNaziv())
                 && this.getSifra().contentEquals(artikal.getSifra());
