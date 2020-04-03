@@ -1,47 +1,58 @@
 package ba.unsa.etf.rs.tut4;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 import java.util.ArrayList;
 
 public class Artikal {
-    private String sifra;
-    private String naziv;
-    private double cijena;
+    private SimpleStringProperty sifra,naziv;
+    private SimpleDoubleProperty cijena;
 
     public Artikal(String sifra, String naziv, double cijena) {
-        setSifra(sifra);
-        setNaziv(naziv);
-        setCijena(cijena);
+       this.sifra=new SimpleStringProperty(sifra);
+        this.naziv= new SimpleStringProperty(naziv);
+        this.cijena = new SimpleDoubleProperty(cijena);
     }
 
     public void setSifra(String sifra) {
-        if(sifra.contentEquals("")) throw new IllegalArgumentException("Šifra je prazna");
-        this.sifra = sifra;
+        this.sifra.set(sifra);
     }
 
     public void setNaziv(String naziv) {
-        if(naziv.contentEquals("")) throw  new IllegalArgumentException("Naziv je prazn");
-        this.naziv = naziv;
+        this.naziv.set(naziv);
     }
 
     public void setCijena(double cijena) {
-        if(cijena<=0) throw  new  IllegalArgumentException("Cijena je negativna");
-        this.cijena = cijena;
+        this.cijena.set(cijena);
     }
 
     public String getSifra() {
+        return sifra.get();
+    }
+
+    public SimpleStringProperty sifraProperty() {
         return sifra;
     }
 
     public String getNaziv() {
+        return naziv.get();
+    }
+
+    public SimpleStringProperty nazivProperty() {
         return naziv;
     }
 
     public double getCijena() {
+        return cijena.get();
+    }
+
+    public SimpleDoubleProperty cijenaProperty() {
         return cijena;
     }
 
     @Override
     public String toString() {
-        return this.naziv+", "+this.sifra+", "+ this.cijena;
+        return this.naziv.get()+", "+this.sifra.get()+", "+ this.cijena.get();
     }
 
     public  static ArrayList<Artikal> izbaciDuplikate (ArrayList<Artikal> lista){
