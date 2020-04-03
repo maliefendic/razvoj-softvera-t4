@@ -17,8 +17,8 @@ public class Racun {
         Artikal artikal;
         int kolicina;
         public Stavke(Artikal artikal, int kolicina) {
-            this.artikal = artikal;
-            this.kolicina = kolicina;
+           setArtikal( artikal);
+           setKolicina(kolicina);
         }
 
         public void setArtikal(Artikal artikal) {

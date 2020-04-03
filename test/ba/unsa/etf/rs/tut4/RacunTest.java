@@ -1,5 +1,6 @@
 package ba.unsa.etf.rs.tut4;
 
+import javafx.beans.property.SimpleObjectProperty;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -36,6 +37,14 @@ class RacunTest {
                 "tip520 3 66.0\n" +
                 "co432 5 5.0\n" +
                 "UKUPNO 91.0",r.toString());
+    }
+    @Test
+    void porovjeraSimpleProperty_a(){
+        Racun r= new Racun();
+        r.setTrenutniArtikl(new Artikal("sir321","sirup",20));
+       Artikal s= new Artikal("sir321","sirup",20);
+        SimpleObjectProperty<Artikal> ar= new SimpleObjectProperty<>(s);
+        assertEquals(r.trenutniArtiklProperty().get().getNaziv(), ar.get().getNaziv());
     }
 
 
