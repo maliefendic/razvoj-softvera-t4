@@ -9,21 +9,24 @@ public class Artikal {
     private SimpleDoubleProperty cijena;
 
     public Artikal(String sifra, String naziv, double cijena) {
-       this.sifra=new SimpleStringProperty(sifra);
-        this.naziv= new SimpleStringProperty(naziv);
-        this.cijena = new SimpleDoubleProperty(cijena);
+       this.setSifra(sifra);
+        this.setNaziv(naziv);
+        this.setCijena(cijena);
     }
 
     public void setSifra(String sifra) {
-        this.sifra.set(sifra);
+            if(sifra.contentEquals("")) throw new IllegalArgumentException("Šifra je prazna");
+        this.sifra= new SimpleStringProperty(sifra);
     }
 
     public void setNaziv(String naziv) {
-        this.naziv.set(naziv);
+        if(naziv.contentEquals("")) throw  new IllegalArgumentException("Naziv je prazn");
+        this.naziv= new SimpleStringProperty(naziv);
     }
 
     public void setCijena(double cijena) {
-        this.cijena.set(cijena);
+        if(cijena<=0) throw  new  IllegalArgumentException("Cijena je negativna");
+        this.cijena = new SimpleDoubleProperty(cijena);
     }
 
     public String getSifra() {
