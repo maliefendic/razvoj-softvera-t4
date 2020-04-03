@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.*?>
 
 <!-- "fx:controller="ba.unsa.etf.rs.tut4.Controller""-->
+
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="495.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
  <tabs>
    <Tab text="Artikli">
@@ -32,7 +33,7 @@
               </children></AnchorPane>
      </content>
    </Tab>
-   <Tab fx:id="comoboks" text="Račun">
+   <Tab fx:id="tab2" text="Račun">
      <content>
        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
@@ -55,7 +56,7 @@
                        <Label text="Artikl" GridPane.halignment="CENTER" />
                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" nodeOrientation="RIGHT_TO_LEFT" text="Količina" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                        <Label text="Aktuelni račun" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                       <Spinner fx:id="spiner" GridPane.columnIndex="1" min="1" max="100000" GridPane.rowIndex="1" />
+                       <Spinner fx:id="spiner" max="100000" min="1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                        <TextArea fx:id="poljePregled" prefHeight="82.0" prefWidth="165.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.rowSpan="2" />
                        <ChoiceBox fx:id="choiceboks" onAction="#selektujArtikl" prefWidth="150.0" GridPane.columnIndex="1" />
                     </children>
