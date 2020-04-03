@@ -16,11 +16,15 @@ public class Controller {
     public Spinner<Integer> spiner;
     public TextArea poljePregled;
     public ChoiceBox<Artikal> choiceboks;
+    public Racun racun ;
 
-    public Racun racun = new Racun();
     public ObservableList <Artikal>  artikli =FXCollections.observableArrayList();
     public SimpleObjectProperty postojciArtikli = new SimpleObjectProperty("");
     public SimpleStringProperty trenutniRacun = new SimpleStringProperty("");
+
+    public Controller(Racun racun) {
+        this.racun=racun;
+    }
 
     @FXML
     public void initialize(){
@@ -47,5 +51,6 @@ public class Controller {
     public void dodajNaRacun(ActionEvent actionEvent) {
       racun.dodajStavku(racun.getTrenutniArtikl(),spiner.getValue());
       trenutniRacun.set(racun.toString());
+      spiner.getValueFactory().setValue(1);
     }
 }
