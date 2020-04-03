@@ -6,14 +6,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.skin.ComboBoxListViewSkin;
-import javafx.scene.input.MouseEvent;
-
-import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.StringReader;
-import java.util.ArrayList;
 
 public class Controller {
 
@@ -21,24 +13,23 @@ public class Controller {
     public TextArea poljeUpisa;
     public TextArea poljePotvrdeUpisa;
     public Button btnDodajNaRacun;
-    public Spinner spiner;
+    public Spinner<Integer> spiner;
     public TextArea poljePregled;
     public ChoiceBox<Artikal> choiceboks;
 
     public Racun racun = new Racun();
     public ObservableList <Artikal>  artikli =FXCollections.observableArrayList();
-    public SimpleObjectProperty postojeciRacuni= new SimpleObjectProperty();
-
+    public SimpleObjectProperty postojciArtikli = new SimpleObjectProperty("");
+    public SimpleStringProperty trenutniRacun = new SimpleStringProperty("");
 
     @FXML
     public void initialize(){
-       poljePotvrdeUpisa.textProperty().bindBidirectional(postojeciRacuni); // uspostavljena veza izmedju stringa koji ima nazive svih dadanih artikala
+       poljePotvrdeUpisa.textProperty().bindBidirectional(postojciArtikli); // uspostavljena veza izmedju stringa koji ima nazive svih dadanih artikala
        choiceboks.setItems(artikli);
-            }
-
-    public void dodajNaRacun(ActionEvent actionEvent) {
-
+       poljePregled.textProperty().bindBidirectional(trenutniRacun); //uspostavljena veza izmedju trenutnog racuna i tekst polja za ispis racuna
     }
+
+
 
     public void dodajArtikle(ActionEvent actionEvent) {
         for (String s:poljeUpisa.getText().split("\\n") ) {
@@ -46,11 +37,15 @@ public class Controller {
             artikli.add(new Artikal(a[0],a[1],Double.parseDouble(a[2])));
         }
         Artikal.izbaciDuplikate(artikli);
-        postojeciRacuni.set(Artikal.IspisiArtikle(artikli));
+        postojciArtikli.set(Artikal.IspisiArtikle(artikli));
     }
 
     public void selektujArtikl(ActionEvent actionEvent) {
        racun.setTrenutniArtikl(choiceboks.getValue());
         System.out.println(racun.getTrenutniArtikl());
+    }
+    public void dodajNaRacun(ActionEvent actionEvent) {
+      racun.dodajStavku(racun.getTrenutniArtikl(),spiner.getValue());
+      trenutniRacun.set(racun.toString());
     }
 }
