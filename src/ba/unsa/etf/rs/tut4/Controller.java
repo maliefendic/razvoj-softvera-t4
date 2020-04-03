@@ -1,4 +1,5 @@
 package ba.unsa.etf.rs.tut4;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,11 +23,11 @@ public class Controller {
     public Button btnDodajNaRacun;
     public Spinner spiner;
     public TextArea poljePregled;
-    public ChoiceBox choiceboks;
+    public ChoiceBox<Artikal> choiceboks;
 
     public Racun racun = new Racun();
     public ObservableList <Artikal>  artikli =FXCollections.observableArrayList();
-    public SimpleStringProperty postojeciRacuni= new SimpleStringProperty("");
+    public SimpleObjectProperty postojeciRacuni= new SimpleObjectProperty();
 
 
     @FXML
@@ -34,8 +35,6 @@ public class Controller {
        poljePotvrdeUpisa.textProperty().bindBidirectional(postojeciRacuni); // uspostavljena veza izmedju stringa koji ima nazive svih dadanih artikala
        choiceboks.setItems(artikli);
             }
-    public void promjeniUkoliciniv(ActionEvent actionEvent) {
-    }
 
     public void dodajNaRacun(ActionEvent actionEvent) {
 
@@ -48,6 +47,10 @@ public class Controller {
         }
         Artikal.izbaciDuplikate(artikli);
         postojeciRacuni.set(Artikal.IspisiArtikle(artikli));
+    }
 
+    public void selektujArtikl(ActionEvent actionEvent) {
+       racun.setTrenutniArtikl(choiceboks.getValue());
+        System.out.println(racun.getTrenutniArtikl());
     }
 }

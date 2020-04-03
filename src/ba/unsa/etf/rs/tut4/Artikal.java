@@ -84,8 +84,11 @@ public class Artikal {
 
     @Override
     public boolean equals(Object obj) {
+        if(obj!=null){
         Artikal artikal = (Artikal)obj;
         return this.getCijena()==artikal.getCijena()  && this.getNaziv().contentEquals(artikal.getNaziv())
                 && this.getSifra().contentEquals(artikal.getSifra());
+        }
+        return  false;
     }
 }

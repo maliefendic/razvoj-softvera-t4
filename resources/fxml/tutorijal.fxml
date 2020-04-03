@@ -22,7 +22,7 @@
                      <children>
                         <Button fx:id="btnDodajArtikle" mnemonicParsing="false" onAction="#dodajArtikle" text="Dodaj artikle" GridPane.columnIndex="1" />
                         <TextArea fx:id="poljeUpisa" prefHeight="184.0" prefWidth="194.0" />
-                        <TextArea fx:id="poljePotvrdeUpisa"  disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                        <TextArea fx:id="poljePotvrdeUpisa" disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                      </children>
                      <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -54,9 +54,9 @@
                         <Label text="Artikl" GridPane.halignment="CENTER" />
                         <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" nodeOrientation="RIGHT_TO_LEFT" text="Količina" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                         <Label text="Aktuelni račun" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                        <Spinner fx:id="spiner" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Spinner fx:id="spiner" GridPane.columnIndex="1" min="1" max="100000" GridPane.rowIndex="1" />
                         <TextArea fx:id="poljePregled" prefHeight="82.0" prefWidth="165.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.rowSpan="2" />
-                        <ChoiceBox fx:id="choiceboks" onAction="#promjeniUkoliciniv" prefWidth="150.0" GridPane.columnIndex="1" />
+                        <ChoiceBox fx:id="choiceboks" onAction="#selektujArtikl" prefWidth="150.0" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
                </children></AnchorPane>

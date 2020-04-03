@@ -1,4 +1,6 @@
 package ba.unsa.etf.rs.tut4;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -7,9 +9,20 @@ import java.util.ArrayList;
 import static java.lang.StrictMath.round;
 
 public class Racun {
+   private ObservableList<Stavke> racun= FXCollections.observableArrayList();
+   private SimpleObjectProperty<Artikal> trenutniArtikl=new SimpleObjectProperty<>();
 
+    public void setTrenutniArtikl(Artikal trenutniArtikl) {
+        this.trenutniArtikl.set(trenutniArtikl);
+    }
 
-    ObservableList<Stavke> racun= FXCollections.observableArrayList();
+    public Artikal getTrenutniArtikl() {
+        return trenutniArtikl.get();
+    }
+
+    public SimpleObjectProperty<Artikal> trenutniArtiklProperty() {
+        return trenutniArtikl;
+    }
 
     private class Stavke{
         Artikal artikal;
