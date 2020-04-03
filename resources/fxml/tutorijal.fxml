@@ -56,7 +56,7 @@
                         <Label text="Aktuelni račun" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                         <Spinner fx:id="spiner" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextArea fx:id="poljePregled" prefHeight="82.0" prefWidth="165.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.rowSpan="2" />
-                        <ChoiceBox fx:id="comoboks1" onMouseClicked="#promjeniUkoliciniv" prefWidth="150.0" GridPane.columnIndex="1" />
+                        <ChoiceBox fx:id="choiceboks" onAction="#promjeniUkoliciniv" prefWidth="150.0" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
                </children></AnchorPane>

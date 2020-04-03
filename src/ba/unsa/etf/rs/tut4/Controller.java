@@ -14,65 +14,21 @@ import java.io.StringReader;
 import java.util.ArrayList;
 
 public class Controller {
-    @FXML
-    public  Button btnDodajArtikle;
-    @FXML
-   public TextArea poljeUpisa;
-    @FXML
+
+    public Button btnDodajArtikle;
+    public TextArea poljeUpisa;
     public TextArea poljePotvrdeUpisa;
-    @FXML
-    public  Button btnDodajNaRacun;
-    @FXML
-    public TextArea poljePregled;
-    @FXML
-    public ChoiceBox comoboks1;
-    @FXML
+    public Button btnDodajNaRacun;
     public Spinner spiner;
+    public TextArea poljePregled;
+    public ChoiceBox choiceboks;
 
-    ArrayList<Artikal> artikli= new ArrayList<>();
-    ArrayList<Racun> racuni = new ArrayList<>();
-    public Racun r= new Racun();
-
-    public void dodajArtikle(ActionEvent actionEvent) throws IOException {
-
-        /*StringReader sr = new StringReader(poljeUpisa.getText());
-        BufferedReader br = new BufferedReader(sr);
-        String linija = "";
-        while ((linija = br.readLine()) != null){
-            String a[]=linija.split(",");
-            artikli.add(new Artikal(a[0],a[1],Double.parseDouble(a[2])));
-        }*/
-        for (String s:poljeUpisa.getText().split("\\n") ) {
-            String a[]=s.split(",");
-            artikli.add(new Artikal(a[0],a[1],Double.parseDouble(a[2])));
-        }
-
-      Artikal.izbaciDuplikate(artikli);
-        String s="";
-        for (int i=0;i<artikli.size();i++){
-           s+=artikli.get(i).toString()+"\n";
-        }
-        poljePotvrdeUpisa.setText(s);
-
-
-       for (int i=0;i<artikli.size();i++){
-           comoboks1.getItems().add(artikli.get(i).getSifra());
-        }
-
+    public void promjeniUkoliciniv(ActionEvent actionEvent) {
     }
-
 
     public void dodajNaRacun(ActionEvent actionEvent) {
-         int i= (int) spiner.getValue();
-        r.dodajStavku(artikli.get(comoboks1.getSelectionModel().getSelectedIndex()),i);
-        poljePregled.setText("");
-        poljePregled.setText(r.toString());
     }
 
-    public void promjeniUkoliciniv(MouseEvent mouseEvent) {
-        System.out.println(comoboks1.getSelectionModel().getSelectedIndex());
-        int i=comoboks1.getSelectionModel().getSelectedIndex();
-        SpinnerValueFactory<Integer>  v= new SpinnerValueFactory.IntegerSpinnerValueFactory(1,100000,1);
-        spiner.setValueFactory(v);
+    public void dodajArtikle(ActionEvent actionEvent) {
     }
 }
