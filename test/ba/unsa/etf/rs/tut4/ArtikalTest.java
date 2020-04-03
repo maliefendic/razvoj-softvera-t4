@@ -1,5 +1,6 @@
 package ba.unsa.etf.rs.tut4;
 
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -168,7 +169,7 @@ class ArtikalTest {
 
     }
     @Test
-    void ispisiArtikle(){
+    void ispisiArtikl(){
         Artikal a = new Artikal("ja123","jabuka",3.4);
         assertEquals("jabuka, ja123, 3.4\n",a.ArtiklIspis());
 
@@ -178,5 +179,15 @@ class ArtikalTest {
         Artikal a = new Artikal("ja123","jabuka",3.4);
         assertEquals(false,a.equals(null));
 
+    }
+    @Test
+    void ispisiArtikle(){
+        ObservableList<Artikal> artikli= FXCollections.observableArrayList();
+       artikli.add(new Artikal("tip500","brasno",2));
+       artikli.add(new Artikal("tip520","brasno",22));
+       artikli.add(new Artikal("co432","cokolada",1));
+       assertEquals("brasno, tip500, 2.0\n" +
+               "brasno, tip520, 22.0\n" +
+               "cokolada, co432, 1.0\n",Artikal.IspisiArtikle(artikli));
     }
 }
