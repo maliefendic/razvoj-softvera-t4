@@ -56,10 +56,13 @@ public class Artikal {
         return cijena;
     }
 
-    @Override
-    public String toString() {
+    public String ArtiklIspis() {
 
-        return this.naziv.get()+", "+this.sifra.get()+", "+ this.cijena.get();
+        return this.naziv.get()+", "+this.sifra.get()+", "+ this.cijena.get()+"\n";
+    }
+    @Override
+    public String toString() { //zbog potreba choiceboxa
+        return this.sifra.get();
     }
 
     public  static <E>  void izbaciDuplikate (List<E> lista){
@@ -71,8 +74,14 @@ public class Artikal {
              }
          }
      }
-        ;
     }
+    public static String IspisiArtikle(ObservableList<Artikal> ar){
+        String s="";
+        for (Artikal a :ar )
+            s+= a.ArtiklIspis();
+        return s;
+    }
+
     @Override
     public boolean equals(Object obj) {
         Artikal artikal = (Artikal)obj;

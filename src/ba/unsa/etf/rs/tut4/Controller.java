@@ -32,12 +32,13 @@ public class Controller {
     @FXML
     public void initialize(){
        poljePotvrdeUpisa.textProperty().bindBidirectional(postojeciRacuni); // uspostavljena veza izmedju stringa koji ima nazive svih dadanih artikala
-
+       choiceboks.setItems(artikli);
             }
     public void promjeniUkoliciniv(ActionEvent actionEvent) {
     }
 
     public void dodajNaRacun(ActionEvent actionEvent) {
+
     }
 
     public void dodajArtikle(ActionEvent actionEvent) {
@@ -46,14 +47,7 @@ public class Controller {
             artikli.add(new Artikal(a[0],a[1],Double.parseDouble(a[2])));
         }
         Artikal.izbaciDuplikate(artikli);
-        postojeciRacuni.set(IspisiArtikle(artikli));
+        postojeciRacuni.set(Artikal.IspisiArtikle(artikli));
 
-
-    }
-    public  String IspisiArtikle(ObservableList<Artikal> ar){
-        String s="";
-        for (Artikal a :ar )
-            s+=a.getNaziv()+", "+a.getSifra()+", "+ a.getCijena()+"\n";
-        return s;
     }
 }
