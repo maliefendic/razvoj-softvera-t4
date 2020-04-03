@@ -22,7 +22,7 @@
                      <children>
                         <Button fx:id="btnDodajArtikle" mnemonicParsing="false" onAction="#dodajArtikle" text="Dodaj artikle" GridPane.columnIndex="1" />
                         <TextArea fx:id="poljeUpisa" prefHeight="184.0" prefWidth="194.0" />
-                        <TextArea fx:id="poljePotvrdeUpisa" disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                        <TextArea fx:id="poljePotvrdeUpisa"  disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                      </children>
                      <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

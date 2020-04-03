@@ -1,8 +1,10 @@
 package ba.unsa.etf.rs.tut4;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Artikal {
     private SimpleStringProperty sifra,naziv;
@@ -13,6 +15,7 @@ public class Artikal {
         this.setNaziv(naziv);
         this.setCijena(cijena);
     }
+
 
     public void setSifra(String sifra) {
             if(sifra.contentEquals("")) throw new IllegalArgumentException("Šifra je prazna");
@@ -55,10 +58,11 @@ public class Artikal {
 
     @Override
     public String toString() {
+
         return this.naziv.get()+", "+this.sifra.get()+", "+ this.cijena.get();
     }
 
-    public  static ArrayList<Artikal> izbaciDuplikate (ArrayList<Artikal> lista){
+    public  static <E>  void izbaciDuplikate (List<E> lista){
      for (int i=0;i<lista.size();i++){
          for (int j = i+1; j <lista.size() ; j++) {
              if(lista.get(i)!=lista.get(j) && lista.get(i).equals(lista.get(j))){
@@ -67,7 +71,7 @@ public class Artikal {
              }
          }
      }
-        return  lista;
+        ;
     }
     @Override
     public boolean equals(Object obj) {

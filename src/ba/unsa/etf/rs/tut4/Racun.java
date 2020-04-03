@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import static java.lang.StrictMath.round;
 
 public class Racun {
+
+
     ObservableList<Stavke> racun= FXCollections.observableArrayList();
 
     private class Stavke{
